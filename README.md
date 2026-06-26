@@ -1,8 +1,8 @@
-# Threads Post Scorer
+# 這篇能發嗎 — Can I Post This?
 
-AI 驅動的 Threads 貼文評分工具。貼上草稿，拿到 0-100 分數 + 逐句診斷 + 改寫版——全部根據你的個人品牌校準。
+AI 幫你的 Threads 貼文打分、抓問題、改到能發。貼上草稿，拿到 0-100 分數 + 逐句診斷 + 改寫版——全部根據你的個人品牌校準。
 
-AI-powered scoring tool for Threads posts. Paste a draft, get a 0-100 score + line-by-line diagnosis + rewrite — all calibrated to your personal brand.
+AI-powered Threads post scorer. Paste a draft, get a 0-100 score + line-by-line diagnosis + rewrite — calibrated to your personal brand.
 
 ## 功能 What It Does
 
@@ -32,10 +32,10 @@ AI-powered scoring tool for Threads posts. Paste a draft, get a 0-100 score + li
 
 ```bash
 # 建立 skill 資料夾
-mkdir -p ~/.claude/skills/threads-post-scorer
+mkdir -p ~/.claude/skills/can-i-post-this
 
 # 複製 skill 檔案
-cp SKILL.md ~/.claude/skills/threads-post-scorer/SKILL.md
+cp SKILL.md ~/.claude/skills/can-i-post-this/SKILL.md
 ```
 
 啟動 Claude Code，說「幫我評分」或直接貼草稿就能用。

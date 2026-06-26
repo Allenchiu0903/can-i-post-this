@@ -1,6 +1,7 @@
-# Threads Post Scorer
+# 這篇能發嗎 — Can I Post This?
 
-> Paste a Threads draft, get a score 0-100 + line-by-line diagnosis + rewrite.
+> 貼上草稿，拿到 0-100 分 + 逐句診斷 + 改寫版。
+> Paste a draft, get a score 0-100 + line-by-line diagnosis + rewrite.
 
 ## Trigger
 
