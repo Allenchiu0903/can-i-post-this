@@ -1,89 +1,109 @@
 # Threads Post Scorer
 
-AI-powered scoring tool for Threads posts. Get a 0-100 score, line-by-line diagnosis, and an improved rewrite — all calibrated to your personal brand.
+AI 驅動的 Threads 貼文評分工具。貼上草稿，拿到 0-100 分數 + 逐句診斷 + 改寫版——全部根據你的個人品牌校準。
 
-## What It Does
+AI-powered scoring tool for Threads posts. Paste a draft, get a 0-100 score + line-by-line diagnosis + rewrite — all calibrated to your personal brand.
 
-Paste your draft → get three things back:
+## 功能 What It Does
 
-1. **Score (0-100)** across 8 dimensions: Hook Power, Conversation Pull, Emotional Resonance, Originality, Format & Rhythm, Action Trigger, Brand Fit, and Reach-Killer Detection
-2. **Line-by-line diagnosis** — every sentence marked 🟢 (strong), 🟡 (improvable), or 🔴 (reach-killer) with specific reasons
-3. **Rewrite** targeting 70+ score, preserving your ideas in a more effective format
+貼上你的草稿 → 拿到三樣東西：
 
-## Personal Calibration
+1. **分數（0-100）** 涵蓋 8 個維度：Hook 力、對話引力、情緒共鳴、原創密度、格式節奏、行動觸發、品牌一致性、殺觸及偵測
+2. **逐句診斷** — 每一句標記 🟢（強句）、🟡（可改）、🔴（殺觸及），附具體原因
+3. **改寫版** — 目標 70 分以上，保留你的觀點，優化表達方式
 
-The first time you use it, the scorer asks 3-5 quick questions:
+## 個人化校準 Personal Calibration
 
-- What platform? (Threads / IG / X / LinkedIn)
-- What are your content topics?
-- What's your posting goal? (grow followers / sell / build authority / share)
-- Who is your audience? *(optional)*
-- Paste your best post *(optional — this reverse-engineers your voice)*
+第一次使用時，評分器會問你 3-5 個問題：
 
-Your answers are saved to `MY_PROFILE.md`. Every score after that is calibrated to you. Say "recalibrate" anytime to redo it.
+- 你在哪個平台發文？（Threads / IG / X / LinkedIn）
+- 你的內容主題是什麼？列 3-5 個關鍵字
+- 你發文的主要目標？（漲粉 / 賣東西 / 建立專業形象 / 純分享）
+- 你的受眾是誰？一句話描述 *（選填）*
+- 貼一篇你寫過最滿意的文章 *（選填——用它來反推你的寫作風格）*
 
-## How to Install
+答案會存成 `MY_PROFILE.md`。之後每次評分都根據你的設定來打，不是通用邏輯。隨時說「重新校準」就能改。
 
-### Claude Code (CLI / Desktop / Web)
+## 安裝方式 How to Install
 
-Copy `SKILL.md` to your Claude Code skills directory:
+### Claude Code（CLI / 桌面版 / 網頁版）
+
+把 `SKILL.md` 複製到 Claude Code 的 skills 資料夾：
 
 ```bash
-# Create skill directory
+# 建立 skill 資料夾
 mkdir -p ~/.claude/skills/threads-post-scorer
 
-# Copy the skill file
+# 複製 skill 檔案
 cp SKILL.md ~/.claude/skills/threads-post-scorer/SKILL.md
 ```
 
-Then start Claude Code and say "score this post" or paste a draft.
+啟動 Claude Code，說「幫我評分」或直接貼草稿就能用。
 
-### Other AI Tools
+### 其他 AI 工具（ChatGPT / Gemini / 任何 LLM）
 
-Copy the contents of `SKILL.md` into your system prompt or custom instructions. The scoring rubric works with any LLM that follows structured instructions.
+把 `SKILL.md` 的內容複製到你的 system prompt 或自訂指令。評分邏輯適用於任何能遵循結構化指令的 LLM。
 
-## Score Ranges
+## 分數區間 Score Ranges
 
-| Range | Meaning |
-|-------|---------|
-| 80-100 | Post it. High chance of strong performance |
-| 70-79 | Minor tweaks. Adjust hook or call-to-action |
-| 50-69 | Structural issues. Needs rewriting |
-| 0-49 | Consider a different angle |
+| 區間 | 含義 |
+|------|------|
+| 80-100 | 直接發，高機率表現好 |
+| 70-79 | 小改即可，調整 Hook 或收尾 |
+| 50-69 | 結構有問題，需要改寫 |
+| 0-49 | 建議換個角度重新來 |
 
-## Example
+## 使用範例 Example
 
-**Input:**
-> I've been using AI tools for 6 months and here are my top 5 takeaways for beginners.
+**輸入：**
+> 52 歲才開始學 AI，來得及嗎
+>
+> 我不是工程師，不會寫程式，半年前連 ChatGPT 都沒用過。
+>
+> 現在我的 AI 系統每天凌晨四點自動抓 40 個來源的新聞、自動寫好 3 篇社群草稿。我一早起來，只需要選一篇發出去。
 
-**Output:**
+**輸出：**
 ```
-Score: 42/100
+分數：82/100
 
-Hook Power: 5/15 — Generic "here are my takeaways" opening. No conflict or surprise.
-Conversation Pull: 3/20 — No question, no debate trigger. Readers have nothing to respond to.
+Hook 力：14/15 — 年齡反差 + 疑問句，直接勾起好奇心和共鳴
+對話引力：12/20 — 結尾有力但封閉，缺少讓人想回覆的開口
+情緒共鳴：14/15 — 三連否定堆疊痛點，凌晨四點場景重建，翻轉有力
+原創密度：9/10 — 第一人稱真實經歷 + 具體數據
 ...
 
-Rewrite (Target: 70+):
+改寫版（目標 85+）：
 
-"6 months ago I couldn't even spell ChatGPT. Yesterday my AI system wrote 3 articles while I slept.
+52 歲才開始學 AI，來得及嗎
 
-Here's what I wish someone told me on day 1..."
+我不是工程師，不會寫程式，半年前連 ChatGPT 都沒用過。
+
+現在我的 AI 系統每天凌晨四點自動抓 40 個來源的新聞、
+自動寫好 3 篇社群草稿。
+
+我一早起來，只需要選一篇發出去。
+
+重點從來不是你幾歲、會不會寫程式。
+重點是你願不願意花時間搞懂一件新東西。
+
+你現在卡在哪一步？留言跟我說，我來拆給你聽。
 ```
 
-## Research Basis
+## 評分依據 Research Basis
 
-Scoring is based on:
-- Meta's official content distribution guidelines
-- Buffer's analysis of 2.5M Threads posts (best posting times) and 45M posts (best formats)
-- Platform-specific algorithm documentation
+評分基於以下公開研究：
+- Meta 官方內容分發指南（Engagement Bait 政策）
+- Buffer 分析 250 萬篇 Threads 貼文（最佳發布時間）和 4500 萬篇貼文（最佳內容格式）
+- 各平台演算法公開文件
 
-See the full source list at the bottom of `SKILL.md`.
+完整來源列表在 `SKILL.md` 底部。
 
-## License
+## 授權 License
 
-MIT — use it however you want.
+MIT — 隨便你怎麼用。
 
 ---
 
-Built by [Allen](https://www.threads.net/@allenchiu0903) — a 52-year-old solo entrepreneur who uses AI to build systems that work while he sleeps. Follow for more AI workflow tools and real-world automation stories.
+由 [Allen](https://www.threads.net/@allenchiu0903) 製作 — 52 歲一人公司創業者，用 AI 建立睡覺時還在工作的系統。追蹤看更多 AI 工作流工具和實戰故事。
+
+Built by [Allen](https://www.threads.net/@allenchiu0903) — a 52-year-old solo entrepreneur using AI to build systems that work while he sleeps.
