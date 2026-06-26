@@ -90,7 +90,7 @@ Score across 8 dimensions, each scored independently then summed:
 | **Format & Rhythm** | 0-10 | Line breaks, sentence length, reading flow. Short sentences mixed + proper breaks (8-10) > Clear paragraphs (5-7) > Wall of text (0-3) |
 | **Action Trigger** | 0-10 | Does the reader have a reason to save/share? Actionable steps worth saving (8-10) > Quotable line worth sharing (5-7) > Read and leave (0-3) |
 | **Brand Fit** | 0-10 | Is it within the user's defined topics + matching their tone? Perfect match (8-10) > Related but drifting (4-7) > Off-topic (0) |
-| **Reach-Killer Detection** | 0-10 | Deduction-based. No reach killers (10) > Minor issues (7) > Obvious problems (0-5) |
+| **Reach-Killer Detection** | 10 minus deductions | Starts at 10. Each reach-killer found deducts 2-3 points. Floor is 0. |
 
 **Reach-Killer Checklist** (each hit deducts 2-3 points):
 - Engagement bait: "comment YES" "reply 1 for link" "agree?"
@@ -191,23 +191,38 @@ Main post: Strong hook + "Details in the replies 👇"
 
 ## Algorithm Reference (Scoring Basis)
 
-Scoring references these known algorithm factors:
+Scoring is based on two categories of evidence: **Threads/Meta official** and **X (Twitter) open-source code**. Where a factor is only confirmed on one platform, it is marked accordingly. Factors confirmed on both platforms or supported by cross-platform research are marked "All".
+
+### Threads / Meta (official)
 
 | Factor | Weight | Notes | Source |
 |--------|--------|-------|--------|
-| Engagement Velocity | Highest | Interactions in the first 30-60 minutes determine distribution | Industry consensus |
-| Reply Depth | Very High | Reply-to-reply = significantly more weight than top-level likes | X open-source code |
+| Engagement Velocity | Highest | Interactions in the first 30-60 minutes determine distribution | Industry consensus, multiple Threads studies |
+| Reply Depth | Very High | Replies (especially reply-to-reply) are the strongest engagement signal | [Meta Transparency Center](https://transparency.meta.com/features/approach-to-ranking/content-distribution-guidelines/engagement-bait) |
 | Save + Share | High | Signals high value, worth more than likes | Industry consensus |
-| Dwell Time | Highest | Algorithm maximizes "unregretted user-seconds" — longer reading = more distribution. Long-form content (2+ min dwell) gets +10 weight | [Musk original post](https://x.com/elonmusk/status/1875355425601999255), X open-source code |
-| Native Content | High | Platform-native text and video outperform external links. The algorithm favors content that keeps users on-platform | X open-source code |
-| Long-Form Content | High | Longer text and longer video get more reach because they naturally increase dwell time | X open-source code (dwell time +10 for 2+ min) |
-| Originality | Medium-High | Recycled content gets suppressed. Post your own original content | X open-source code |
-| Video > Image | Medium-High | Video carries more information per second than static images, leading to higher engagement and dwell time | X open-source code, Buffer 45M post analysis |
-| No Hashtags | — | Hashtags are no longer used by the algorithm. Musk: "Please stop using hashtags. The system doesn't need them anymore and they look ugly." | [Musk original post](https://x.com/elonmusk/status/1869070358210572306) |
-| Content Freshness | Medium | New posts get a boost | Industry consensus |
-| Positive/Constructive | Medium | Negative/attacking content gets suppressed. Algorithm aims to maximize *unregretted* user time, not just any user time | [Musk original post](https://x.com/elonmusk/status/1875355425601999255) |
+| Engagement Bait Penalty | Penalty | "comment YES", "reply 1 for link" etc. get suppressed | [Meta Transparency Center](https://transparency.meta.com/features/approach-to-ranking/content-distribution-guidelines/engagement-bait) (official) |
+| Originality | Medium-High | Recycled content gets suppressed; original content is rewarded | Industry consensus, Meta statements |
+| Content Freshness | Medium | New posts get a distribution boost | Industry consensus |
 
-**Note on cross-platform applicability:** The factors above are confirmed for X (Twitter). Threads (Meta) has a different algorithm, but shares similar principles: engagement velocity, reply depth, dwell time, and originality are important on both platforms. Platform-specific differences are noted in the Reach-Killer Detection section.
+### X / Twitter (open-source code + Musk statements)
+
+These factors are **confirmed for X** via open-source code or Musk's public statements. They likely apply to Threads in principle (both are feed-based social platforms), but are **not officially confirmed by Meta**.
+
+| Factor | Weight | Notes | Source |
+|--------|--------|-------|--------|
+| Dwell Time | Highest | Algorithm maximizes "unregretted user-seconds". Long-form content (2+ min dwell) gets +10 weight in X's code | [Musk post](https://x.com/elonmusk/status/1875355425601999255), [X open-source code](https://github.com/twitter/the-algorithm) |
+| Native Content | High | Platform-native text and video outperform external links | [X open-source code](https://github.com/twitter/the-algorithm) |
+| Long-Form Content | High | Longer text and video get more reach because they increase dwell time | [X open-source code](https://github.com/twitter/the-algorithm) |
+| Video > Image | Medium-High | Video carries more information per second, leading to higher engagement | [X open-source code](https://github.com/twitter/the-algorithm), Buffer 45M post analysis |
+| No Hashtags | — | "Please stop using hashtags. The system doesn't need them anymore and they look ugly." | [Musk post](https://x.com/elonmusk/status/1869070358210572306) |
+| Positive/Constructive | Medium | Negative content gets suppressed. Algorithm aims to maximize *unregretted* user time | [Musk post](https://x.com/elonmusk/status/1875355425601999255) |
+
+### Cross-Platform (large-scale data)
+
+| Factor | Notes | Source |
+|--------|-------|--------|
+| Best posting times | Weekday mornings 7-10am globally | [Buffer 2.5M Threads posts](https://buffer.com/resources/the-best-time-to-post-on-threads/) |
+| Image+text > text-only | Image posts get ~1.6x engagement vs text-only | [Buffer 45M posts across platforms](https://buffer.com/resources/data-best-content-format-social-media/) |
 
 ## Posting Time Suggestions
 
@@ -269,7 +284,7 @@ Suggested posting time: [based on user's timezone]
 
 ### Platform Official Sources
 - [Meta Transparency Center — Engagement Bait](https://transparency.meta.com/features/approach-to-ranking/content-distribution-guidelines/engagement-bait)
-- [X Algorithm Open Source Code](https://explainx.ai/blog/x-algorithm-open-source-github-elon-musk-2026) — dwell time weights, native content boost, originality signals
+- [X Algorithm Open Source Code (GitHub)](https://github.com/twitter/the-algorithm) — the actual source code, not a summary article
 
 ### Large-Scale Data Analysis
 - [Buffer — Best Time to Post on Threads (2.5M posts)](https://buffer.com/resources/the-best-time-to-post-on-threads/)
@@ -283,3 +298,9 @@ Suggested posting time: [based on user's timezone]
 
 > Built by [Allen](https://www.threads.net/@allenchiu0903) — a 52-year-old solo entrepreneur using AI to build systems that work while he sleeps.
 > Original version created with [Nuwa Skill Builder](https://github.com/alchaincyf/nuwa-skill)
+>
+> **Version 1.1** (2026-06-26)
+> - Fixed: Reach-Killer scoring now uses true deduction model (starts at 10, deducts per violation)
+> - Fixed: Algorithm reference split into Threads/Meta official vs X/Twitter confirmed vs cross-platform
+> - Fixed: X open-source code link changed from summary article to actual GitHub repo
+> - Reviewed by: Codex (gpt-5.4)

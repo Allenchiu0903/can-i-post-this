@@ -90,7 +90,7 @@
 | **格式節奏** | 0-10 | 換行、斷句、閱讀節奏。短句交錯＋適當換行（8-10）> 段落分明（5-7）> 文字牆（0-3） |
 | **行動觸發** | 0-10 | 讀者有沒有理由儲存/分享？有可執行步驟值得存（8-10）> 有金句值得轉（5-7）> 看完就走（0-3） |
 | **品牌一致性** | 0-10 | 是否在使用者定義的主題內＋符合語氣？完全吻合（8-10）> 相關但偏（4-7）> 不在主題內（0） |
-| **殺觸及偵測** | 0-10 | 扣分制。無殺觸及因子（10）> 輕微（7）> 有明顯問題（0-5） |
+| **殺觸及偵測** | 10 減扣分 | 從 10 分開始，每發現一個殺觸及因子扣 2-3 分，最低 0 分 |
 
 **殺觸及因子清單**（每命中一項扣 2-3 分）：
 - 互動釣魚：「留言 YES」「回覆 1 拿連結」「同意嗎？」
@@ -193,21 +193,38 @@
 
 評分參考以下已知的演算法因子：
 
+評分依據分兩類證據：**Threads/Meta 官方** 和 **X (Twitter) 開源碼**。只在單一平台確認的因子會標明，兩平台共通或有跨平台研究支持的標「通用」。
+
+### Threads / Meta（官方）
+
 | 因子 | 權重 | 說明 | 來源 |
 |------|------|------|------|
-| 互動速度 | 最高 | 發布後 30-60 分鐘內的互動量決定推播 | 業界共識 |
-| 回覆深度 | 極高 | 回覆的回覆，權重遠高於頂層按讚 | X 開源碼 |
+| 互動速度 | 最高 | 發布後 30-60 分鐘內的互動量決定推播 | 業界共識，多項 Threads 研究 |
+| 回覆深度 | 極高 | 回覆（特別是回覆的回覆）是最強的互動信號 | [Meta Transparency Center](https://transparency.meta.com/features/approach-to-ranking/content-distribution-guidelines/engagement-bait) |
 | 儲存＋分享 | 高 | 代表高價值，比按讚重要 | 業界共識 |
-| 停留時間 | 最高 | 演算法目標是最大化「不後悔的使用者停留秒數」。長內容（停留 2 分鐘以上）權重 +10 | [馬斯克推文](https://x.com/elonmusk/status/1875355425601999255)、X 開源碼 |
-| 原生內容 | 高 | 平台原生的文字和影片，表現優於外部連結。演算法偏好讓使用者留在平台上的內容 | X 開源碼 |
-| 長內容 | 高 | 長文和長影片觸及更好，因為自然增加停留時間 | X 開源碼（停留時間 2 分鐘以上 +10） |
-| 原創性 | 中高 | 回收內容被降權。發布你自己的原創內容 | X 開源碼 |
-| 影片 > 圖片 | 中高 | 影片每秒承載的資訊量比靜態圖片多，帶來更高互動和停留時間 | X 開源碼、Buffer 4500 萬篇分析 |
-| 不要用 Hashtag | — | 演算法已不使用 hashtag。馬斯克：「請不要再用 hashtag 了，系統已經不需要它了，而且很醜。」 | [馬斯克推文](https://x.com/elonmusk/status/1869070358210572306) |
+| 互動釣魚懲罰 | 降權 | 「留言 YES」「回覆 1 拿連結」等會被降權 | [Meta Transparency Center](https://transparency.meta.com/features/approach-to-ranking/content-distribution-guidelines/engagement-bait)（官方）|
+| 原創性 | 中高 | 回收內容被降權，原創內容被加分 | 業界共識、Meta 聲明 |
 | 內容新鮮度 | 中 | 新貼文有推播加成 | 業界共識 |
-| 正向/建設性 | 中 | 負面/攻擊性內容被壓。演算法追求的是「不後悔的」使用者停留，不只是任何停留 | [馬斯克推文](https://x.com/elonmusk/status/1875355425601999255) |
 
-**跨平台適用說明：** 以上因子已在 X（Twitter）上確認。Threads（Meta）演算法不同，但共享類似原則：互動速度、回覆深度、停留時間和原創性在兩個平台上都很重要。各平台差異在殺觸及偵測區段說明。
+### X / Twitter（開源碼 + 馬斯克發言）
+
+以下因子已在 X 上透過開源碼或馬斯克公開發言**確認**。在 Threads 上原則相似（兩者都是動態牆社群平台），但 **Meta 未官方確認**。
+
+| 因子 | 權重 | 說明 | 來源 |
+|------|------|------|------|
+| 停留時間 | 最高 | 演算法目標是最大化「不後悔的使用者停留秒數」。長內容（停留 2 分鐘以上）權重 +10 | [馬斯克推文](https://x.com/elonmusk/status/1875355425601999255)、[X 開源碼](https://github.com/twitter/the-algorithm) |
+| 原生內容 | 高 | 平台原生的文字和影片，表現優於外部連結 | [X 開源碼](https://github.com/twitter/the-algorithm) |
+| 長內容 | 高 | 長文和長影片觸及更好，因為自然增加停留時間 | [X 開源碼](https://github.com/twitter/the-algorithm) |
+| 影片 > 圖片 | 中高 | 影片每秒承載的資訊量比靜態圖片多 | [X 開源碼](https://github.com/twitter/the-algorithm)、Buffer 4500 萬篇分析 |
+| 不要用 Hashtag | — | 「請不要再用 hashtag 了，系統已經不需要它了，而且很醜。」 | [馬斯克推文](https://x.com/elonmusk/status/1869070358210572306) |
+| 正向/建設性 | 中 | 負面內容被壓。演算法追求「不後悔的」使用者停留 | [馬斯克推文](https://x.com/elonmusk/status/1875355425601999255) |
+
+### 跨平台（大規模數據）
+
+| 因子 | 說明 | 來源 |
+|------|------|------|
+| 最佳發文時間 | 全球平日早上 7-10am | [Buffer 250 萬篇 Threads 分析](https://buffer.com/resources/the-best-time-to-post-on-threads/) |
+| 圖文 > 純文字 | 圖文互動約為純文字的 1.6 倍 | [Buffer 4500 萬篇跨平台分析](https://buffer.com/resources/data-best-content-format-social-media/) |
 
 ## 發布時段建議
 
@@ -269,7 +286,7 @@
 
 ### 平台官方來源
 - [Meta Transparency Center — Engagement Bait](https://transparency.meta.com/features/approach-to-ranking/content-distribution-guidelines/engagement-bait)
-- [X 演算法開源碼](https://explainx.ai/blog/x-algorithm-open-source-github-elon-musk-2026) — 停留時間權重、原生內容加分、原創性信號
+- [X 演算法開源碼（GitHub）](https://github.com/twitter/the-algorithm) — 停留時間權重、原生內容加分、原創性信號
 
 ### 大規模數據分析
 - [Buffer — Threads 最佳發布時間（250 萬篇）](https://buffer.com/resources/the-best-time-to-post-on-threads/)
@@ -283,3 +300,9 @@
 
 > 由 [Allen](https://www.threads.net/@allenchiu0903) 製作 — 52 歲一人公司創業者，用 AI 建立睡覺時還在工作的系統。
 > 原始版本使用 [女媧 Skill 造人術](https://github.com/alchaincyf/nuwa-skill) 生成
+>
+> **版本 1.1**（2026-06-26）
+> - 修正：殺觸及偵測改為真正的扣分制（從 10 分開始，每個違規扣 2-3 分）
+> - 修正：演算法參考拆分為 Threads/Meta 官方 vs X/Twitter 已確認 vs 跨平台
+> - 修正：X 開源碼連結改為 GitHub 原始碼 repo
+> - 審核：Codex (gpt-5.4)
