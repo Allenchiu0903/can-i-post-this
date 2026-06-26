@@ -1,112 +1,109 @@
-# 這篇能發嗎 — Can I Post This?
+# Can I Post This?
 
-AI 幫你的 Threads 貼文打分、抓問題、改到能發。貼上草稿，拿到 0-100 分數 + 逐句診斷 + 改寫版——全部根據你的個人品牌校準。
+[繁體中文版 README](README-zh-TW.md)
 
-AI-powered Threads post scorer. Paste a draft, get a 0-100 score + line-by-line diagnosis + rewrite — calibrated to your personal brand.
+AI-powered post scorer for Threads, Instagram, X, and LinkedIn. Paste a draft, get a 0-100 score + line-by-line diagnosis + rewrite — calibrated to your personal brand.
 
-## 功能 What It Does
+## What It Does
 
-貼上你的草稿 → 拿到三樣東西：
+Paste your draft → get three things back:
 
-1. **分數（0-100）** 涵蓋 8 個維度：Hook 力、對話引力、情緒共鳴、原創密度、格式節奏、行動觸發、品牌一致性、殺觸及偵測
-2. **逐句診斷** — 每一句標記 🟢（強句）、🟡（可改）、🔴（殺觸及），附具體原因
-3. **改寫版** — 目標 70 分以上，保留你的觀點，優化表達方式
+1. **Score (0-100)** across 8 dimensions: Hook Power, Conversation Pull, Emotional Resonance, Originality, Format & Rhythm, Action Trigger, Brand Fit, and Reach-Killer Detection
+2. **Line-by-line diagnosis** — every sentence marked 🟢 (strong), 🟡 (improvable), or 🔴 (reach-killer) with specific reasons
+3. **Rewrite** targeting 70+ score, preserving your ideas in a more effective format
 
-## 個人化校準 Personal Calibration
+## Personal Calibration
 
-第一次使用時，評分器會問你 3-5 個問題：
+The first time you use it, the scorer asks 3-5 quick questions:
 
-- 你在哪個平台發文？（Threads / IG / X / LinkedIn）
-- 你的內容主題是什麼？列 3-5 個關鍵字
-- 你發文的主要目標？（漲粉 / 賣東西 / 建立專業形象 / 純分享）
-- 你的受眾是誰？一句話描述 *（選填）*
-- 貼一篇你寫過最滿意的文章 *（選填——用它來反推你的寫作風格）*
+- What platform do you post on? (Threads / IG / X / LinkedIn)
+- What are your content topics? List 3-5 keywords
+- What's your posting goal? (grow followers / sell / build authority / share)
+- Who is your audience? *(optional)*
+- Paste your best post *(optional — reverse-engineers your writing voice)*
 
-答案會存成 `MY_PROFILE.md`。之後每次評分都根據你的設定來打，不是通用邏輯。隨時說「重新校準」就能改。
+Your answers are saved to `MY_PROFILE.md`. Every score after that is calibrated to you, not a one-size-fits-all template. Say "recalibrate" anytime to redo it.
 
-## 安裝方式 How to Install
+## How to Install
 
-### Claude Code（CLI / 桌面版 / 網頁版）
+### Claude Code (CLI / Desktop / Web)
 
-把 Skill 檔案複製到 Claude Code 的 skills 資料夾。有中文版和英文版，選一個：
+Copy the skill file to your Claude Code skills directory. Choose English or Traditional Chinese:
 
 ```bash
-# 建立 skill 資料夾
+# Create skill directory
 mkdir -p ~/.claude/skills/can-i-post-this
 
-# 中文版（繁體中文介面）
-cp SKILL-zh-TW.md ~/.claude/skills/can-i-post-this/SKILL.md
-
-# 英文版
+# English version
 cp SKILL.md ~/.claude/skills/can-i-post-this/SKILL.md
+
+# Traditional Chinese version (繁體中文)
+cp SKILL-zh-TW.md ~/.claude/skills/can-i-post-this/SKILL.md
 ```
 
-啟動 Claude Code，說「幫我評分」或直接貼草稿就能用。
+Start Claude Code and say "score this post" or paste a draft.
 
-### 其他 AI 工具（ChatGPT / Gemini / 任何 LLM）
+### Other AI Tools (ChatGPT / Gemini / any LLM)
 
-把 `SKILL.md` 的內容複製到你的 system prompt 或自訂指令。評分邏輯適用於任何能遵循結構化指令的 LLM。
+Copy the contents of `SKILL.md` (or `SKILL-zh-TW.md`) into your system prompt or custom instructions. The scoring rubric works with any LLM that follows structured instructions.
 
-## 分數區間 Score Ranges
+## Score Ranges
 
-| 區間 | 含義 |
-|------|------|
-| 80-100 | 直接發，高機率表現好 |
-| 70-79 | 小改即可，調整 Hook 或收尾 |
-| 50-69 | 結構有問題，需要改寫 |
-| 0-49 | 建議換個角度重新來 |
+| Range | Meaning |
+|-------|---------|
+| 80-100 | Post it. High chance of strong performance |
+| 70-79 | Minor tweaks. Adjust hook or call-to-action |
+| 50-69 | Structural issues. Needs rewriting |
+| 0-49 | Consider a different angle |
 
-## 使用範例 Example
+## Example
 
-**輸入：**
-> 52 歲才開始學 AI，來得及嗎
+**Input:**
+> Just turned 52 and started learning AI from zero. No coding background, couldn't even use ChatGPT six months ago.
 >
-> 我不是工程師，不會寫程式，半年前連 ChatGPT 都沒用過。
->
-> 現在我的 AI 系統每天凌晨四點自動抓 40 個來源的新聞、自動寫好 3 篇社群草稿。我一早起來，只需要選一篇發出去。
+> Now my AI system automatically crawls 40+ news sources at 4am, generates 3 social media drafts, and creates image assets. I wake up and just pick one to post.
 
-**輸出：**
+**Output:**
 ```
-分數：82/100
+Score: 82/100
 
-Hook 力：14/15 — 年齡反差 + 疑問句，直接勾起好奇心和共鳴
-對話引力：12/20 — 結尾有力但封閉，缺少讓人想回覆的開口
-情緒共鳴：14/15 — 三連否定堆疊痛點，凌晨四點場景重建，翻轉有力
-原創密度：9/10 — 第一人稱真實經歷 + 具體數據
+Hook Power: 14/15 — Age contrast + question format, immediately triggers curiosity
+Conversation Pull: 12/20 — Strong ending but closed. No open question inviting replies
+Emotional Resonance: 14/15 — Triple denial stacking pain points, 4am scene recreation
+Originality: 9/10 — First-person real experience + specific numbers
 ...
 
-改寫版（目標 85+）：
+Rewrite (Target: 85+):
 
-52 歲才開始學 AI，來得及嗎
+Just turned 52 and started learning AI. No coding, no tech background.
 
-我不是工程師，不會寫程式，半年前連 ChatGPT 都沒用過。
+Six months ago I was copy-pasting ChatGPT prompts like everyone else.
 
-現在我的 AI 系統每天凌晨四點自動抓 40 個來源的新聞、
-自動寫好 3 篇社群草稿。
+Today my system runs at 4am while I sleep — 40+ sources crawled,
+3 drafts written, images generated.
 
-我一早起來，只需要選一篇發出去。
+I wake up and pick one to post. That's it.
 
-重點從來不是你幾歲、會不會寫程式。
-重點是你願不願意花時間搞懂一件新東西。
+The real question isn't whether you're too old.
+It's whether you're willing to spend time figuring out one new thing.
 
-你現在卡在哪一步？留言跟我說，我來拆給你聽。
+What's the step you're stuck on right now? Tell me — I'll break it down.
 ```
 
-## 評分依據 Research Basis
+## Research Basis
 
-評分基於以下公開研究：
-- Meta 官方內容分發指南（Engagement Bait 政策）
-- Buffer 分析 250 萬篇 Threads 貼文（最佳發布時間）和 4500 萬篇貼文（最佳內容格式）
-- 各平台演算法公開文件
+Scoring is based on:
+- Elon Musk's verified public statements on X algorithm goals ([original posts](https://x.com/elonmusk/status/1875355425601999255))
+- X algorithm open-source code (dwell time weights, native content boost, originality signals)
+- Meta's official content distribution guidelines (Engagement Bait policy)
+- Buffer's analysis of 2.5M Threads posts (best posting times) and 45M posts (best formats)
 
-完整來源列表在 `SKILL.md` 底部。
+Full source list with links at the bottom of `SKILL.md`.
 
-## 授權 License
+## License
 
-MIT — 隨便你怎麼用。
+MIT — use it however you want.
 
 ---
 
-由 [Allen](https://www.threads.net/@allenchiu0903) 製作 — 52 歲一人公司創業者，用 AI 建立睡覺時還在工作的系統。追蹤看更多 AI 工作流工具和實戰故事。
-
-Built by [Allen](https://www.threads.net/@allenchiu0903) — a 52-year-old solo entrepreneur using AI to build systems that work while he sleeps.
+Built by [Allen](https://www.threads.net/@allenchiu0903) — a 52-year-old solo entrepreneur using AI to build systems that work while he sleeps. Follow for more AI workflow tools and real-world automation stories.
