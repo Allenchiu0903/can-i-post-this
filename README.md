@@ -28,13 +28,16 @@ AI-powered Threads post scorer. Paste a draft, get a 0-100 score + line-by-line 
 
 ### Claude Code（CLI / 桌面版 / 網頁版）
 
-把 `SKILL.md` 複製到 Claude Code 的 skills 資料夾：
+把 Skill 檔案複製到 Claude Code 的 skills 資料夾。有中文版和英文版，選一個：
 
 ```bash
 # 建立 skill 資料夾
 mkdir -p ~/.claude/skills/can-i-post-this
 
-# 複製 skill 檔案
+# 中文版（繁體中文介面）
+cp SKILL-zh-TW.md ~/.claude/skills/can-i-post-this/SKILL.md
+
+# 英文版
 cp SKILL.md ~/.claude/skills/can-i-post-this/SKILL.md
 ```
 
