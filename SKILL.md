@@ -194,16 +194,21 @@ Main post: Strong hook + "Details in the replies 👇"
 
 Scoring references these known algorithm factors:
 
-| Factor | Weight | Notes |
-|--------|--------|-------|
-| Engagement Velocity | Highest | Interactions in the first 30-60 minutes determine distribution |
-| Reply Depth | Very High | Reply-to-reply = significantly more weight than top-level likes |
-| Save + Share | High | Signals high value, worth more than likes |
-| Dwell Time | Medium-High | Longer reading time = more distribution |
-| Originality | Medium-High | Recycled content gets suppressed |
-| Image+Text | Medium | Image posts get higher engagement than text-only |
-| Content Freshness | Medium | New posts get a boost |
-| Positive/Constructive | Medium | Negative/attacking content gets suppressed |
+| Factor | Weight | Notes | Source |
+|--------|--------|-------|--------|
+| Engagement Velocity | Highest | Interactions in the first 30-60 minutes determine distribution | Industry consensus |
+| Reply Depth | Very High | Reply-to-reply = significantly more weight than top-level likes | X open-source code |
+| Save + Share | High | Signals high value, worth more than likes | Industry consensus |
+| Dwell Time | Highest | Algorithm maximizes "unregretted user-seconds" — longer reading = more distribution. Long-form content (2+ min dwell) gets +10 weight | [Musk original post](https://x.com/elonmusk/status/1875355425601999255), X open-source code |
+| Native Content | High | Platform-native text and video outperform external links. The algorithm favors content that keeps users on-platform | X open-source code |
+| Long-Form Content | High | Longer text and longer video get more reach because they naturally increase dwell time | X open-source code (dwell time +10 for 2+ min) |
+| Originality | Medium-High | Recycled content gets suppressed. Post your own original content | X open-source code |
+| Video > Image | Medium-High | Video carries more information per second than static images, leading to higher engagement and dwell time | X open-source code, Buffer 45M post analysis |
+| No Hashtags | — | Hashtags are no longer used by the algorithm. Musk: "Please stop using hashtags. The system doesn't need them anymore and they look ugly." | [Musk original post](https://x.com/elonmusk/status/1869070358210572306) |
+| Content Freshness | Medium | New posts get a boost | Industry consensus |
+| Positive/Constructive | Medium | Negative/attacking content gets suppressed. Algorithm aims to maximize *unregretted* user time, not just any user time | [Musk original post](https://x.com/elonmusk/status/1875355425601999255) |
+
+**Note on cross-platform applicability:** The factors above are confirmed for X (Twitter). Threads (Meta) has a different algorithm, but shares similar principles: engagement velocity, reply depth, dwell time, and originality are important on both platforms. Platform-specific differences are noted in the Reach-Killer Detection section.
 
 ## Posting Time Suggestions
 
@@ -258,12 +263,20 @@ Suggested posting time: [based on user's timezone]
 
 ## Research Sources
 
-### Primary Sources
+### Elon Musk Original Statements (verified)
+- [Musk: "maximize unregretted user-seconds"](https://x.com/elonmusk/status/1875355425601999255) — algorithm goal is meaningful dwell time, not just engagement
+- [Musk: "Please stop using hashtags"](https://x.com/elonmusk/status/1869070358210572306) — algorithm no longer uses them
+- [Musk: links and algorithm goal](https://x.com/elonmusk/status/1705186497329061908) — "algorithm is trying to maximize unregretted user time on X"
+
+### Platform Official Sources
 - [Meta Transparency Center — Engagement Bait](https://transparency.meta.com/features/approach-to-ranking/content-distribution-guidelines/engagement-bait)
+- [X Algorithm Open Source Code](https://explainx.ai/blog/x-algorithm-open-source-github-elon-musk-2026) — dwell time weights, native content boost, originality signals
+
+### Large-Scale Data Analysis
 - [Buffer — Best Time to Post on Threads (2.5M posts)](https://buffer.com/resources/the-best-time-to-post-on-threads/)
 - [Buffer — Best Content Format (45M posts)](https://buffer.com/resources/data-best-content-format-social-media/)
 
-### Secondary Sources
+### Secondary Sources (industry analysis, not official)
 - [Metricool — Threads Algorithm 2026](https://metricool.com/threads-algorithm/)
 - [PostEverywhere — How the Threads Algorithm Works](https://posteverywhere.ai/blog/how-the-threads-algorithm-works)
 
